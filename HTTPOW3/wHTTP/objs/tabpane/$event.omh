@@ -1,0 +1,9 @@
+On evTabSelected     ;; Event Parameters - pTabNumber ( integer )
+	If pTabNumber=3
+		If pos("application/json",iResponseHeaders.contenttype)
+			Do OJSON.$formatjson(iResponse.responseContent) Returns iFormattedResponseContent
+		Else
+			Do OXML.$formatbinaschar(iResponse.responseContent) Returns iFormattedResponseContent
+		End If
+		Do $cinst.$objs.tabpane.$objs.responsecontent.$redraw()
+	End If

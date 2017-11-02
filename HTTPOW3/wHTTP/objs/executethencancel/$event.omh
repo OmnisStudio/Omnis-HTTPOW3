@@ -1,0 +1,8 @@
+On evClick     ;; Event Parameters - pRow( Itemreference )
+	If $cinst.$execute()
+		Do iHttp.$cancel() Returns lOk
+		If not(lOk)
+			OK message  {Error [iHttp.$errorcode]: [iHttp.$errortext]}
+			Quit event handler
+		End If
+	End If
