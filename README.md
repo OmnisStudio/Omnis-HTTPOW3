@@ -1,5 +1,7 @@
 # Omnis-HTTPOW3
 Omnis library to show the use of an HTTP Worker Object to get content from a remote server.
+For more info:
+http://www.omnis.net/documentation/extendingomnis/index.jsp?detail=07webcomms.html#http-worker
 
 Requires Omnis Studio 8.1.2 or above.
 
