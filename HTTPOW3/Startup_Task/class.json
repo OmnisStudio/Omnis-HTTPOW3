@@ -1,0 +1,35 @@
+{
+	"classtype": "kTask",
+	"internalversion": 3,
+	"tvardefs": [
+
+	],
+	"cvardefs": [
+		{
+			"name": "cHttp",
+			"order": 1,
+			"type": "kObjectref",
+			"subtype": "",
+			"sublen": 0,
+			"initval": "#NULL"
+		}
+	],
+	"ivardefs": [
+
+	],
+	"properties": {
+		"collectperformancedata": false,
+		"componenticon": 0,
+		"componenttype": "kCompStoreHidden",
+		"createdate": "2017-09-07 11:57:07",
+		"desc": "",
+		"editor": "",
+		"editordata": "",
+		"external": false,
+		"issupercomponent": false,
+		"moddate": "2017-09-07 08:47:16",
+		"showascheckedout": false,
+		"userinfo": "",
+		"version": "1"
+	}
+}

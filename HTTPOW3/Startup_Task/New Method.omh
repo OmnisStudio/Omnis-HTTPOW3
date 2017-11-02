@@ -1,0 +1,16 @@
+Open trace log
+If isnull(cHttp)
+	Do $clib.$objects.oHTTP.$newref() Returns cHttp
+End If
+Do lHeaders.$define(lName,lValue)
+Do lHeaders.$add("content-type","application/json")
+Do cHttp.$init("www.apple.com",kOW3httpMethodGet,lHeaders,"")
+Do cHttp.$start()
+Send to trace log {1}
+Send to trace log {2}
+Calculate #1 as #CT
+;  While (#CT-#1)<300
+;  Send to trace log {[#CT]}
+;  End While
+Send to trace log {3}
+Calculate #S1 as #CT

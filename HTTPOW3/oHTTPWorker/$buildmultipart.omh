@@ -1,0 +1,13 @@
+Do lPartHeaders.$define(#S1,#S2)
+Do lPartHeaders.$add("header1","header1Value")
+Do lPartHeaders.$add("header2","header2Value")
+
+Do $cinst.$multipartclear()
+Do $cinst.$multipartaddfield("test","my data",lPartHeaders)
+Do $cinst.$multipartaddfield("test2","my data2")
+Do lPartHeaders.$add("header3","header3Value")
+;  Do lPartHeaders.$add("content-type","text/xml;charset=utf-8")
+Do $cinst.$multipartaddfile("file1",row(pContentPath),"anotherfilename.txt",lPartHeaders)
+Do $cinst.$multipartaddfile("file2",lCharData,"anotherfilename2.txt")
+ReadBinFile (pContentPath,lBinData)
+Do $cinst.$multipartaddfile("file3",lBinData,"anotherfilename3.txt")
