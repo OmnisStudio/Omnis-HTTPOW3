@@ -1,0 +1,4 @@
+If isnull(iHttp)
+	Do $objects.oHTTPWorker.$newref() Returns iHttp
+	Do iHttp.$setCallingInst($cinst)
+End If

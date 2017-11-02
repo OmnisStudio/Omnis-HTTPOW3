@@ -1,0 +1,27 @@
+{
+	"ident": 1076,
+	"order": 16398,
+	"objtype": "kLabel",
+	"properties": {
+		"align": "kRightJst",
+		"backcolor": "kColorBackFill",
+		"backpattern": 15,
+		"designactive": true,
+		"edgefloat": "kEFtopBottom",
+		"fieldstyle": "CtrlLabel",
+		"font": 5,
+		"fontsize": 0,
+		"fontstyle": "kPlain",
+		"forecolor": "kColorForeFill",
+		"height": 21,
+		"left": 5,
+		"objlink": 65537,
+		"text": "Logging",
+		"textcolor": "kColorWindowText",
+		"top": 400,
+		"userinfo": "",
+		"vertcentertext": true,
+		"visible": true,
+		"width": 160
+	}
+}

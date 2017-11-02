@@ -1,0 +1,69 @@
+Calculate iResponse as #NULL
+Calculate iResponseHeaders as #NULL
+Calculate iFormattedResponseContent as ""
+Do $cinst.$redraw(1,1)
+Do method checkHttpObject
+
+Do method setupLogging
+Calculate iHttp.$followredirects as iFollowRedirects
+Calculate iHttp.$timeout as iTimeout
+Calculate iHttp.$proxyserver as iProxyServer
+Calculate iHttp.$proxytunnel as iProxyTunnel
+Calculate iHttp.$proxyauthtype as iProxyAuthList.iAuthType
+Calculate iHttp.$proxyauthusername as iProxyUser
+Calculate iHttp.$proxyauthpassword as iProxyPassword
+Calculate iHttp.$callprogress as iCallProgress
+If iCallProgress
+	Open trace log (Clear trace log)
+End If
+Calculate iHttp.$responsepath as iResponseContentPath
+
+;  Uncomment some or all of this block to try internal CURL options
+;  Do iCurlOptions.$define(iCurlOptionNumber,iCurlOptionValue)
+;  Do iCurlOptions.$add(92,-1)     ;; DNS cache timeout - no timeout
+;  Do iCurlOptions.$add(10102,"gzip")     ;; Only accept gzip
+;  Do iCurlOptions.$add(10036,"CUSTOM")     ;; Custom HTTP method
+;  Calculate iHttp.$curloptions as iCurlOptions
+
+If len(iContentPath)
+	If not(FileOps.$doesfileexist(iContentPath))
+		OK message  {Content file does not exist}
+		Quit method kFalse
+	End If
+	If not(iSendContentMode)
+		ReadBinFile (iContentPath,iContent) Returns lError
+		If lError<0
+			OK message  {Error [lError] reading file [iContentPath]}
+			Quit method kFalse
+		End If
+	End If
+Else
+	Calculate iContent as
+End If
+If iSendContentMode=1
+	Do iHttp.$init(iURI,iMethodList.iMethod,iHeaderList,row(iContentPath),iAuthList.iAuthType,iUser,iPassword) Returns lOk
+Else If iSendContentMode=2
+	Do iHttp.$buildmultipart(iContentPath)
+	Do iHttp.$init(iURI,iMethodList.iMethod,iHeaderList,kOW3httpMultiPartFormData,iAuthList.iAuthType,iUser,iPassword) Returns lOk
+Else If iSendContentMode=0
+	Do iHttp.$init(iURI,iMethodList.iMethod,iHeaderList,iContent,iAuthList.iAuthType,iUser,iPassword) Returns lOk
+End If
+If not(lOk)
+	OK message  {Error [iHttp.$errorcode]: [iHttp.$errortext]}
+	Quit method kFalse
+End If
+If pRun
+	Do iHttp.$run() Returns lOk
+Else
+	Do iHttp.$start() Returns lOk
+	If lOk
+		Calculate $cinst.$objs.ScrollBox.$objs.cancel.$enabled as kTrue
+		Calculate $cinst.$objs.ScrollBox.$objs.execute.$enabled as kFalse
+		Calculate $cinst.$objs.ScrollBox.$objs.executethencancel.$enabled as kFalse
+	End If
+End If
+If not(lOk)
+	OK message  {Error [iHttp.$errorcode]: [iHttp.$errortext]}
+	Quit method kFalse
+End If
+Quit method kTrue

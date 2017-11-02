@@ -1,0 +1,20 @@
+Calculate iResponse as pResults
+Calculate iResponseHeaders as iResponse.responseHeaders
+;  iFormattedResponseContent is not generated until the response tab is clicked
+If iUsingLogBrowser
+	Do FileOps.$deletefile(iLogHTMLPath)
+	WriteBinFile (iLogHTMLPath,iResponse.log)
+	Calculate iLogBrowser.$urlorcontrolname as con("file://",replaceall(iLogHTMLPath," ","%20"))
+Else
+	Calculate iLog as iResponse.log
+	Do $cinst.$objs.tabpane.$objs.logtext.$redraw()
+End If
+Do $cinst.$objs.tabpane.$objs.responseheadersgrid.$redraw()
+Do $cinst.$objs.tabpane.$objs.responsegrid.$redraw()
+
+Do $cinst.$objs.tabpane.$objs.responsegrid.$vertical()
+Do $cinst.$objs.tabpane.$objs.responseheadersgrid.$vertical()
+Calculate $cinst.$objs.ScrollBox.$objs.cancel.$enabled as kFalse
+Calculate $cinst.$objs.ScrollBox.$objs.execute.$enabled as kTrue
+Calculate $cinst.$objs.ScrollBox.$objs.executethencancel.$enabled as kTrue
+Calculate $cinst.$objs.tabpane.$currenttab as 2

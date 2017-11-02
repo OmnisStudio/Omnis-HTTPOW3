@@ -1,0 +1,4 @@
+Calculate $cinst.$objs.ScrollBox.$objs.cancel.$enabled as kFalse
+Calculate $cinst.$objs.ScrollBox.$objs.execute.$enabled as kTrue
+Calculate $cinst.$objs.ScrollBox.$objs.executethencancel.$enabled as kTrue
+OK message  {Cancelled!}

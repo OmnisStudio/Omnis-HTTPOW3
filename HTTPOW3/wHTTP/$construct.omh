@@ -1,0 +1,41 @@
+Do iURIList.$define(iURI)
+Do iURIList.$add("http://www.omnis.net")
+Do iURIList.$add("http://www.bbc.com")
+Calculate iURIList.$line as 1
+Calculate iURI as iURIList.C1
+
+Do $modes.$dotoolmethod(kEnvToolBrowser,175,$cinst.$objs.tabpane.$objs.responsegrid)     ;; Show header list line count in grid
+
+Do iMethodList.$define(iMethodName,iMethod)
+Do iMethodList.$add("Delete",kOW3httpMethodDelete)
+Do iMethodList.$add("Get",kOW3httpMethodGet)
+Do iMethodList.$add("Head",kOW3httpMethodHead)
+Do iMethodList.$add("Options",kOW3httpMethodOptions)
+Do iMethodList.$add("Patch",kOW3httpMethodPatch)
+Do iMethodList.$add("Post",kOW3httpMethodPost)
+Do iMethodList.$add("Put",kOW3httpMethodPut)
+Do iMethodList.$add("Trace",kOW3httpMethodTrace)
+Calculate iMethodList.$line as 2
+
+Do iAuthList.$define(iAuthName,iAuthType)
+Do iAuthList.$add("None",kOW3httpAuthTypeNone)
+Do iAuthList.$add("Basic",kOW3httpAuthTypeBasic)
+Do iAuthList.$add("Digest",kOW3httpAuthTypeDigest)
+Calculate iAuthList.$line as 1
+Calculate iProxyAuthList as iAuthList
+
+Do iHeaderList.$define(iHeaderName,iHeaderValue)
+Do iHeaderList.$add("content-type","application/json")
+;  Do iHeaderList.$add("omnis-server","5988")
+
+Do iLogTypeList.$define(iLogTypeChar,iLogType,iUsesHTML)
+Do iLogTypeList.$add("No logging",kOW3logNone,kFalse)
+Do iLogTypeList.$add("Basic logging (HTML)",kOW3logBasic+kOW3logHTML,kTrue)
+Do iLogTypeList.$add("Basic and data logging (HTML)",kOW3logBasic+kOW3logData+kOW3logHTML,kTrue)
+Do iLogTypeList.$add("Full logging (HTML)",kOW3logBasic+kOW3logData+kOW3logSecureData+kOW3logHTML,kTrue)
+Do iLogTypeList.$add("Basic logging",kOW3logBasic,kFalse)
+Do iLogTypeList.$add("Basic and data logging",kOW3logBasic+kOW3logData,kFalse)
+Do iLogTypeList.$add("Full logging",kOW3logBasic+kOW3logData+kOW3logSecureData,kFalse)
+Calculate iLogTypeList.$line as 2
+
+Do method addObrowserIfSupported

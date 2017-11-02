@@ -1,0 +1,27 @@
+{
+	"ident": 1029,
+	"order": 16387,
+	"objtype": "kLabel",
+	"properties": {
+		"align": "kRightJst",
+		"backcolor": "kColorBackFill",
+		"backpattern": 15,
+		"designactive": true,
+		"edgefloat": "kEFnone",
+		"fieldstyle": "CtrlLabel",
+		"font": 5,
+		"fontsize": 0,
+		"fontstyle": "kPlain",
+		"forecolor": "kColorForeFill",
+		"height": 19,
+		"left": 5,
+		"objlink": 65537,
+		"text": "Headers to send",
+		"textcolor": "kColorWindowText",
+		"top": 135,
+		"userinfo": "",
+		"vertcentertext": true,
+		"visible": true,
+		"width": 160
+	}
+}
